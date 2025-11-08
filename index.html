@@ -5,36 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vatican City | Guide</title>
     <meta name="description" content="Official guide to Vatican City – the smallest independent state in the world, home of Pope Leo XIV and center of the Catholic Church.">
-   
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-   
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   
     <style>
         :root {
-            --gold: #D4AF37;
+            --gold: #D4AF36;
             --deep-red: #8B0000;
             --white: #FFFFFF;
             --cream: #F5F5DC;
             --dark-gray: #2F2F2F;
             --light-gold: #E8C66A;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Lora', serif;
             background-color: var(--cream);
             color: var(--dark-gray);
             line-height: 1.7;
         }
-
         header {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             color: var(--white);
@@ -42,19 +39,16 @@
             padding: 120px 20px 80px;
             position: relative;
         }
-
         header::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(139, 0, 0, 0.4);
         }
-
         .header-content {
             position: relative;
             z-index: 2;
         }
-
         .logo {
             width: 80px;
             height: 80px;
@@ -68,20 +62,17 @@
             color: var(--deep-red);
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
-
         h1 {
             font-family: 'Cinzel', serif;
             font-size: 3.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
-
         .subtitle {
             font-size: 1.4rem;
             font-style: italic;
             opacity: 0.9;
         }
-
         nav {
             background-color: var(--deep-red);
             padding: 15px 0;
@@ -90,7 +81,6 @@
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -98,7 +88,6 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-
         nav a {
             color: var(--white);
             text-decoration: none;
@@ -107,19 +96,16 @@
             transition: all 0.3s;
             display: inline-block;
         }
-
         nav a:hover {
             background-color: var(--gold);
             color: var(--deep-red);
             border-radius: 5px;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
-
         section {
             margin-bottom: 80px;
             background: var(--white);
@@ -127,7 +113,6 @@
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
-
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
@@ -136,7 +121,6 @@
             text-align: center;
             position: relative;
         }
-
         h2::after {
             content: '';
             display: block;
@@ -145,7 +129,6 @@
             background: var(--gold);
             margin: 15px auto 0;
         }
-
         .intro {
             text-align: center;
             font-size: 1.2rem;
@@ -153,14 +136,12 @@
             margin: 0 auto 40px;
             color: #555;
         }
-
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
         .card {
             background: var(--white);
             border-radius: 10px;
@@ -168,33 +149,27 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
-
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
-
         .card-content {
             padding: 20px;
         }
-
         .card h3 {
             color: var(--deep-red);
             margin-bottom: 10px;
             font-family: 'Cinzel', serif;
         }
-
         .card p {
             font-size: 0.95rem;
             color: #666;
         }
-
         .facts {
             background: linear-gradient(135deg, var(--light-gold), var(--gold));
             color: var(--deep-red);
@@ -203,11 +178,9 @@
             margin: 15px 0;
             font-weight: 600;
         }
-
         .pope-section {
             text-align: center;
         }
-
         .pope-img {
             width: 180px;
             height: 180px;
@@ -217,7 +190,6 @@
             margin: 20px auto;
             display: block;
         }
-
         .quote {
             font-style: italic;
             font-size: 1.3rem;
@@ -227,13 +199,11 @@
             background: rgba(212, 175, 55, 0.1);
             border-left: 5px solid var(--gold);
         }
-
         .timeline {
             position: relative;
             max-width: 1000px;
             margin: 40px auto;
         }
-
         .timeline::before {
             content: '';
             position: absolute;
@@ -244,22 +214,18 @@
             left: 50%;
             margin-left: -2px;
         }
-
         .timeline-item {
             padding: 20px 40px;
             position: relative;
             width: 50%;
             background: var(--white);
         }
-
         .timeline-item:nth-child(odd) {
             left: 0;
         }
-
         .timeline-item:nth-child(even) {
             left: 50%;
         }
-
         .timeline-item::after {
             content: '';
             position: absolute;
@@ -272,30 +238,25 @@
             border-radius: 50%;
             z-index: 1;
         }
-
         .timeline-item:nth-child(even)::after {
             left: -10px;
         }
-
         .timeline-content {
             padding: 20px;
             background: var(--white);
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-
         .timeline-content h3 {
             color: var(--deep-red);
             margin-bottom: 8px;
         }
-
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
-
         .gallery img {
             width: 100%;
             height: 200px;
@@ -304,18 +265,15 @@
             transition: transform 0.3s;
             cursor: pointer;
         }
-
         .gallery img:hover {
             transform: scale(1.05);
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
-
         .stat-card {
             text-align: center;
             padding: 20px;
@@ -324,34 +282,28 @@
             border-radius: 10px;
             font-weight: 600;
         }
-
         .stat-number {
             font-size: 2rem;
             font-family: 'Cinzel', serif;
         }
-
         .pope-bio {
             max-width: 800px;
             margin: 20px auto;
             text-align: left;
         }
-
         .pope-bio h4 {
             color: var(--deep-red);
             margin-bottom: 10px;
         }
-
         .pope-bio ul {
             list-style-type: none;
             padding-left: 0;
         }
-
         .pope-bio li {
             margin-bottom: 8px;
             padding-left: 20px;
             position: relative;
         }
-
         .pope-bio li::before {
             content: '\f105';
             font-family: 'Font Awesome 6 Free';
@@ -360,7 +312,6 @@
             position: absolute;
             left: 0;
         }
-
         .visit-tips {
             background: rgba(212, 175, 55, 0.1);
             padding: 20px;
@@ -368,7 +319,6 @@
             margin: 20px 0;
             border-left: 5px solid var(--gold);
         }
-
         footer {
             background: var(--dark-gray);
             color: var(--white);
@@ -376,37 +326,30 @@
             padding: 50px 20px 30px;
             margin-top: 50px;
         }
-
         .footer-links {
             margin-bottom: 20px;
         }
-
         .footer-links a {
             color: var(--gold);
             text-decoration: none;
             margin: 0 15px;
             font-weight: 600;
         }
-
         .footer-links a:hover {
             color: var(--light-gold);
         }
-
         .social-icons {
             margin: 20px 0;
         }
-
         .social-icons a {
             color: var(--gold);
             font-size: 1.5rem;
             margin: 0 10px;
             transition: color 0.3s;
         }
-
         .social-icons a:hover {
             color: var(--light-gold);
         }
-
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             .nav-container { flex-direction: column; text-align: center; }
@@ -419,17 +362,15 @@
     </style>
 </head>
 <body>
-
     <header>
         <div class="header-content">
             <div class="logo">
                 <i class="fas fa-church"></i>
             </div>
-            <h1>Guide to Vatican (not a official website)</h1>
+            <h1>Guide to Vatican (not an official website)</h1>
             <p class="subtitle">The Holy See • Stato della Città del Vaticano</p>
         </div>
     </header>
-
     <nav>
         <div class="nav-container">
             <a href="#home">Home</a>
@@ -438,11 +379,10 @@
             <a href="#pope">The Pope</a>
             <a href="#visit">Visit</a>
             <a href="#gallery">Gallery</a>
+            <a href="#map">Map</a>
         </div>
     </nav>
-
     <div class="container">
-
         <section id="home">
             <p class="intro">
                 Welcome to <strong>Vatican City</strong> – the smallest independent state in the world by both area and population, covering just 44 hectares (110 acres) and home to approximately 800 residents.
@@ -450,7 +390,6 @@
                 Governed as an absolute elective monarchy, the Pope holds supreme legislative, executive, and judicial authority.
                 Established in 1929 via the Lateran Treaty, Vatican City is a UNESCO World Heritage Site and a hub of unparalleled artistic, historical, and religious treasures.
             </p>
-
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">0.44</div>
@@ -469,7 +408,6 @@
                     <div>Independence</div>
                 </div>
             </div>
-
             <div class="grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="St. Peter's Basilica">
@@ -478,7 +416,6 @@
                         <p>The largest church in the world, built over the tomb of St. Peter, with a capacity for 60,000 worshippers. It features Michelangelo's Pietà and Bernini's bronze baldachin.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1588693881060-47f7b66206d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sistine Chapel">
                     <div class="card-content">
@@ -486,7 +423,6 @@
                         <p>Commissioned by Pope Sixtus IV in 1473, renowned for Michelangelo's ceiling frescoes depicting the Book of Genesis and his monumental The Last Judgment on the altar wall.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1601919051618-49b4b5b84d2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vatican Museums">
                     <div class="card-content">
@@ -495,7 +431,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="facts">
                 <i class="fas fa-info-circle"></i> Vatican City issues its own euros, passports, and postage stamps, and maintains a unique Swiss Guard for papal protection since 1506.
             </div>
@@ -504,7 +439,6 @@
         <section id="history">
             <h2>Historical Timeline</h2>
             <p class="intro">From its ancient origins as a pilgrimage site to its modern status as a sovereign entity, the history of Vatican City is intertwined with the papacy and the evolution of Christianity.</p>
-
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
@@ -512,42 +446,36 @@
                         <p>St. Peter, the first Pope, is martyred and buried on Vatican Hill, establishing it as a sacred site for early Christians under Roman persecution.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>4th Century</h3>
                         <p>Emperor Constantine the Great legalizes Christianity and constructs the original St. Peter's Basilica over St. Peter's tomb, marking the site's transformation into a major basilica.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>1506–1626</h3>
                         <p>The current Renaissance St. Peter's Basilica is rebuilt under Popes Julius II and others, involving architects like Bramante, Raphael, and Michelangelo, who designed the iconic dome.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>1870</h3>
                         <p>The Capture of Rome ends the Papal States; Popes become 'Prisoners of the Vatican' until resolution with the Italian government.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>1929</h3>
                         <p>The Lateran Treaty, signed by Pope Pius XI and Benito Mussolini, creates Vatican City as an independent sovereign state, resolving the 'Roman Question'.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>1984</h3>
                         <p>UNESCO designates the Historic Centre of Rome, including Vatican City, as a World Heritage Site for its profound cultural and religious significance.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>2025</h3>
@@ -560,7 +488,6 @@
         <section id="attractions">
             <h2>Key Attractions</h2>
             <p class="intro">Vatican City is a treasure trove of art, architecture, and spirituality. Explore its iconic landmarks, each telling a story of faith and human ingenuity.</p>
-
             <div class="grid">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1605648916403-935194b5c5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="St. Peter's Square">
@@ -569,7 +496,6 @@
                         <p>Designed by Gian Lorenzo Bernini between 1656 and 1667, this elliptical piazza accommodates 400,000 people and features 140 saints atop its colonnades, symbolizing the Church's embrace.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dome of St. Peter's">
                     <div class="card-content">
@@ -577,7 +503,6 @@
                         <p>Michelangelo's 136-meter masterpiece offers breathtaking views from its lantern; ascend 551 steps or elevator for a panorama of Rome, with the obelisk below marking ancient Egyptian origins.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1578662996442-48f60103fcbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vatican Gardens">
                     <div class="card-content">
@@ -585,7 +510,6 @@
                         <p>Spanning 23 hectares with manicured lawns, fountains, and the Lourdes Grotto replica, these gardens provide a serene escape, accessible via guided tours revealing papal history.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1601919051618-49b4b5b84d2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vatican Apostolic Library">
                     <div class="card-content">
@@ -593,7 +517,6 @@
                         <p>One of the oldest libraries globally, founded in 1475, preserving 75,000 codices including the Codex Vaticanus, the earliest complete Bible manuscript from the 4th century.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cdce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Swiss Guard">
                     <div class="card-content">
@@ -601,7 +524,6 @@
                         <p>Founded in 1506, this elite corps of 135 soldiers in Renaissance-inspired uniforms protects the Pope; witness the ceremonial changing of the guard in St. Peter's Square.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1588693881060-47f7b66206d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Raphael Rooms">
                     <div class="card-content">
@@ -618,7 +540,6 @@
             <h3>Pope Leo XIV</h3>
             <p><em>Bishop of Rome • Vicar of Christ • Successor of St. Peter • 267th Pope</em></p>
             <p>Born Robert Francis Prevost on September 14, 1955, in Chicago, Illinois, USA. Elected May 8, 2025, as the first American Pope, marking a historic milestone for the Church.</p>
-
             <div class="pope-bio">
                 <h4>Early Life and Ministry</h4>
                 <ul>
@@ -627,7 +548,6 @@
                     <li>Appointed Bishop of Chiclayo, Peru, in 2015, and elevated to Cardinal in 2023 by Pope Francis.</li>
                     <li>Prior to his election, served as Prefect of the Dicastery for Bishops, influencing global episcopal appointments.</li>
                 </ul>
-
                 <h4>Papal Election and Vision</h4>
                 <ul>
                     <li>Chosen on the fourth ballot during the 2025 conclave following the death of Pope Francis, with white smoke signaling his election at 18:07 CEST.</li>
@@ -636,12 +556,10 @@
                     <li>Canonized seven new saints on October 19, 2025, during the Jubilee Year, highlighting diverse global holiness from Asia, Africa, and the Americas.</li>
                 </ul>
             </div>
-
             <div class="quote">
                 "In this era of rapid technological change, let us echo Leo XIII's call for justice: technology must serve humanity, not enslave it. The Church stands as a guardian of dignity in the face of artificial intelligence and the new industrial revolution."
                 <br><small>— Pope Leo XIV, Address to the College of Cardinals, May 10, 2025</small>
             </div>
-
             <div class="facts">
                 <i class="fas fa-users"></i> As the first U.S.-born Pope, Leo XIV brings a unique perspective on global issues, including peace efforts in Ukraine, the Middle East, and interfaith dialogue.
             </div>
@@ -650,7 +568,6 @@
         <section id="visit">
             <h2>Advice for Booking</h2>
             <p class="intro">Visiting Vatican City requires preparation to fully appreciate its wonders. Advance booking is essential, especially during high seasons and papal events.</p>
-
             <div class="grid">
                 <div class="card">
                     <div class="card-content">
@@ -658,7 +575,6 @@
                         <p>Secure timed-entry tickets for Vatican Museums (€17–€33) and Sistine Chapel online. St. Peter's Basilica is free, but dome access costs €8–€10. Official site: <a href="https://www.museivaticani.va" target="_blank" style="color:var(--deep-red);">museivaticani.va</a>. Guided tours available for deeper insights.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-content">
                         <h3><i class="fas fa-clock"></i> Opening Hours</h3>
@@ -667,21 +583,18 @@
                            Gardens Tours: Tue–Sun, book in advance.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-content">
                         <h3><i class="fas fa-pray"></i> Dress Code & Etiquette</h3>
                         <p>Modest attire required: shoulders and knees covered for both men and women. No hats inside churches, and silence is observed in sacred spaces. Photography allowed except in Sistine Chapel.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-content">
                         <h3><i class="fas fa-map-marker-alt"></i> Getting There</h3>
                         <p>Metro Line A to Ottaviano or Lepanto stations (10-min walk). Free entry via security at St. Peter's Square. Expect queues; arrive early for papal audiences on Wednesdays.</p>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-content">
                         <h3><i class="fas fa-hand-holding-usd"></i> Practical Tips</h3>
@@ -691,7 +604,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card">
                     <div class="card-content">
                         <h3><i class="fas fa-exclamation-triangle"></i> Accessibility</h3>
@@ -706,14 +618,158 @@
             <p class="intro">A visual journey through Vatican City's timeless beauty – from frescoed ceilings to papal ceremonies.</p>
             <div class="gallery">
                 <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vatican at night">
-                <img src="https://images.unsplash.com/photo-1588693881060-47f7b66206d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sistine Chapel ceiling">
-                <img src="https://images.unsplash.com/photo-1605648916360-5849c93b2d6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Swiss Guards">
+                <img src="https://colosseumandvaticantours.com/wp-content/uploads/2019/03/IMG_3508.jpg" alt="Sistine Chapel ceiling">
+                <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="St. Peter's Basilica interior">
+                <img src="https://images.unsplash.com/photo-1605648916403-935194b5c5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="St. Peter's Square">
                 <img src="https://images.unsplash.com/photo-1578662996442-48f60103fcbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vatican Gardens">
-                <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="St. Peter's interior">
-                <img src="https://images.unsplash.com/photo-1601919051618-49b4b5b84d2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Laocoön sculpture">
-                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cdce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Raphael's School of Athens">
-                <img src="https://images.unsplash.com/photo-1605648916403-935194b5c5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="St. Peter's Square colonnade">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cdce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Swiss Guard">
+            </div>
+        </section>
 
-                <!-- New Images Added -->
-                <img src="https://discovery.sndimg.com/content/dam/images/discovery/fullset/2022/4/12/GettyImages-1210659789.jpg.rend.hgtvcom.1280.1280.suffix/1649787607062.jpeg" alt="St. Peter's Basilica illuminated at dusk, showcasing its grand Renaissance facade and the iconic dome designed by Michelangelo, a symbol of papal authority and architectural genius.">
-                <img src="data:image/jpeg;base64,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
+        <!-- INTERACTIVE MAP SECTION -->
+        <section id="map">
+            <h2>Interactive Tourist Map</h2>
+            <p class="intro">Explore Vatican City’s iconic landmarks with this interactive map. Click markers for details, photos, and navigation tips.</p>
+            <div id="vatican-map" style="height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1);"></div>
+            <div class="visit-tips" style="margin-top: 20px; text-align: center;">
+                <i class="fas fa-compass"></i> <strong>Tip:</strong> Use on mobile for GPS-guided walking directions from St. Peter’s Square.
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#history">History</a>
+                <a href="#attractions">Attractions</a>
+                <a href="#pope">The Pope</a>
+                <a href="#visit">Visit</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#map">Map</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2025 Vatican City Guide (Unofficial). All rights reserved.</p>
+            <p><small>This is a fan-made educational website and is not affiliated with the Holy See or the Vatican City State.</small></p>
+        </div>
+    </footer>
+
+    <!-- MAP SCRIPT (MOVED FROM INSIDE <style>) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the map centered on Vatican City
+            const map = L.map('vatican-map').setView([41.9022, 12.4571], 16);
+
+            // OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 19,
+            }).addTo(map);
+
+            // Custom Vatican boundary (approximate polygon)
+            const vaticanBoundary = [
+                [41.9065, 12.4512], [41.9060, 12.4598], [41.9005, 12.4605],
+                [41.9000, 12.4580], [41.8995, 12.4540], [41.9010, 12.4500],
+                [41.9030, 12.4495], [41.9055, 12.4510]
+            ];
+            L.polygon(vaticanBoundary, {
+                color: '#D4AF36',
+                weight: 3,
+                opacity: 0.8,
+                fillColor: '#D4AF36',
+                fillOpacity: 0.15
+            }).addTo(map).bindPopup("<b>Vatican City State</b><br>0.44 km² • Sovereign since 1929");
+
+            // Custom icon for attractions
+            const goldIcon = L.divIcon({
+                html: `<i class="fas fa-cross" style="color: #D4AF36; font-size: 20px;"></i>`,
+                iconSize: [30, 30],
+                className: 'custom-div-icon'
+            });
+
+            // Add attraction markers
+            const attractions = [
+                {
+                    coords: [41.9022, 12.4572],
+                    name: "St. Peter's Basilica",
+                    desc: "World's largest church. Free entry. Dome climb: €8–10.",
+                    img: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                    link: "#attractions"
+                },
+                {
+                    coords: [41.9029, 12.4542],
+                    name: "Sistine Chapel",
+                    desc: "Michelangelo's masterpiece. Part of Vatican Museums (€17+).",
+                    img: "https://colosseumandvaticantours.com/wp-content/uploads/2019/03/IMG_3508.jpg",
+                    link: "#attractions"
+                },
+                {
+                    coords: [41.9028, 12.4560],
+                    name: "Vatican Museums",
+                    desc: "70,000 artworks. Book online to skip lines.",
+                    img: "https://images.unsplash.com/photo-1601919051618-49b4b5b84d2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                    link: "https://www.museivaticani.va"
+                },
+                {
+                    coords: [41.9038, 12.4580],
+                    name: "Vatican Gardens",
+                    desc: "Guided tours only. Book 48h in advance.",
+                    img: "https://images.unsplash.com/photo-1578662996442-48f60103fcbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                    link: "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita/giardini-vaticani.html"
+                },
+                {
+                    coords: [41.9020, 12.4570],
+                    name: "St. Peter's Square",
+                    desc: "Bernini’s masterpiece. Papal audiences on Wednesdays.",
+                    img: "https://images.unsplash.com/photo-1605648916403-935194b5c5ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                    link: "#attractions"
+                },
+                {
+                    coords: [41.9015, 12.4530],
+                    name: "Swiss Guard Barracks",
+                    desc: "See the colorful Renaissance uniforms. Changing of guard daily.",
+                    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cdce?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                    link: "#attractions"
+                }
+            ];
+
+            attractions.forEach(attr => {
+                const marker = L.marker(attr.coords, { icon: goldIcon }).addTo(map);
+                const popupContent = `
+                    <div style="width: 220px; font-family: 'Lora', serif;">
+                        <img src="${attr.img}" alt="${attr.name}" style="width:100%; height:120px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+                        <b style="color:#8B0000; font-size:1.1rem;">${attr.name}</b>
+                        <p style="font-size:0.85rem; color:#555; margin:5px 0;">${attr.desc}</p>
+                        <a href="${attr.link}" target="_blank" style="color:#D4AF36; font-weight:600; font-size:0.8rem; text-decoration:none;">
+                            More Info →
+                        </a>
+                    </div>
+                `;
+                marker.bindPopup(popupContent, { maxWidth: 240 });
+            });
+
+            // Add legend
+            const legend = L.control({ position: 'bottomright' });
+            legend.onAdd = function () {
+                const div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML = `
+                    <div style="background:#fff; padding:10px; border-radius:8px; box-shadow:0 0 15px rgba(0,0,0,0.2); font-size:0.9rem; line-height:1.5;">
+                        <i class="fas fa-cross" style="color:#D4AF36;"></i> Attraction<br>
+                        <i class="fas fa-border-all" style="color:#D4AF36;"></i> Vatican Border
+                    </div>
+                `;
+                return div;
+            };
+            legend.addTo(map);
+
+            // Fit map to Vatican bounds
+            map.fitBounds(vaticanBoundary);
+        });
+    </script>
+</body>
+</html>
